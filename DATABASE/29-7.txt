@@ -1,0 +1,702 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Student 61>mongosh
+Current Mongosh Log ID: 6a69ca45ce1eef92eb748a5e
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.3
+Using MongoDB:          8.0.10
+Using Mongosh:          2.5.3
+mongosh 2.9.2 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-07-29T07:25:32.809+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> showdbs
+ReferenceError: showdbs is not defined
+test> show dbs
+88           8.00 KiB
+DB1        120.00 KiB
+DBk         72.00 KiB
+EDA_pract  120.00 KiB
+admin       40.00 KiB
+config      48.00 KiB
+crud        72.00 KiB
+db          72.00 KiB
+dixa        72.00 KiB
+local       72.00 KiB
+student    120.00 KiB
+tystudent   72.00 KiB
+vnsgu        8.00 KiB
+test> use DBk
+switched to db DBk
+DBk> db.users.aggregate([{$group:{_id:"$Gender",avfAge:{$avg:"$age"}}}]);
+[ { _id: 'male', avfAge: null }, { _id: 'female', avfAge: null } ]
+DBk> db.users.aggregate([{$group:{_id:"$Gender",avgAge:{$avg:"$age"}}}]);
+[ { _id: 'male', avgAge: null }, { _id: 'female', avgAge: null } ]
+DBk> db.users.aggregate([{$group:{_id:"$Gender",avgAge:{$avg:"$Age"}}}]);
+[ { _id: 'male', avgAge: 20.75 }, { _id: 'female', avgAge: 21.5 } ]
+DBk> db.users.aggregate([{$sort:{age-1}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:31)
+
+> 1 | db.users.aggregate([{$sort:{age-1}}]);
+    |                                ^
+  2 |
+
+DBk> db.users.aggregate([{$sort:{age:-1}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  }
+]
+DBk> db.users.aggregate([{$sort:{Age:-1}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  }
+]
+DBk> db.users.aggregate([{$sort:{Age:1}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  }
+]
+DBk> db.users.aggregate([{$sort:{Age}}]);
+ReferenceError: Age is not defined
+DBk> db.users.aggregate([{$sort:{Age:1}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  }
+]
+DBk> db.users.aggregate([{$count:""}]
+...
+...
+... db.users.aggregate([{$count:"totalUsers"}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (4:0)
+
+  2 |
+  3 |
+> 4 | db.users.aggregate([{$count:"totalUsers"}]);
+    | ^
+  5 |
+
+DBk> db.users.aggregate([{$count:"totalUsers"}]);
+[ { totalUsers: 6 } ]
+DBk> db.users.find({Age:{$gte:18,$He:25}});
+MongoServerError[BadValue]: unknown operator: $He
+DBk> db.users.find({Age:{$gte:18,$H:25}});
+MongoServerError[BadValue]: unknown operator: $H
+DBk> db.users.find({Age:{$gte:18,$le:25}});
+MongoServerError[BadValue]: unknown operator: $le
+DBk> db.users.find({Age:{$gte:18,$lte:25}});
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  }
+]
+DBk> db.users.find({Age:{$gte:18,$lte:21}});
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  }
+]
+DBk> db.users.find({$or:{Gender:"male"}});
+MongoServerError[BadValue]: $or argument must be an array
+DBk> db.users.find({$or:{Gender:"m"}});
+MongoServerError[BadValue]: $or argument must be an array
+DBk> db.users.find({$or:[{Gender:"male"},{Age:{$lt:21}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.users.find({$or:[{Gender:"male"},{Age:{$lt:21}}}]);
+    |                                                   ^
+  2 |
+
+DBk> db.users.find({$or:[{Gender:"male"},{Age:{$lt:21}}]});
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_id: 101,
+    S_name: 'Kuldeep',
+    Age: 22,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_id: 103,
+    S_name: 'Sahil',
+    Age: 21,
+    City: 'Surat',
+    Gender: 'male',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  }
+]
+DBk> db.users.find({$or:[{Gender:"female"},{Age:{$lt:21}}]});
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_id: 102,
+    S_name: 'Nishant',
+    Age: 20,
+    City: 'Pune',
+    Gender: 'male',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_id: 104,
+    S_name: 'Shivam',
+    Age: 20,
+    City: 'Delhi',
+    Gender: 'male',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_id: 105,
+    S_name: 'Utsavi',
+    Age: 21,
+    City: 'Agra',
+    Gender: 'female',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_id: 106,
+    S_name: 'Bhargi',
+    Age: 22,
+    City: 'Chennai',
+    Gender: 'female',
+    phone: 9874563215
+  }
+]
+DBk> db.users.find([{$project:{name:1,phone:{$ifNull:["$phone","not found"]}}}]);
+MongoInvalidArgumentError: Query filter must be a plain object or ObjectId
+DBk> db.users.find({$project:{name:1,phone:{$ifNull:["$phone","not found"]}}});
+MongoServerError[BadValue]: unknown top level operator: $project. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+DBk> db.users.aggregate([{$project:{name:1,phone:{$ifNull:["$phone","not found"]}}}]);
+[
+  { _id: ObjectId('6a575b858aca103b4f748a5f'), phone: 9874563219 },
+  { _id: ObjectId('6a575b858aca103b4f748a60'), phone: 9874563211 },
+  { _id: ObjectId('6a575baf8aca103b4f748a61'), phone: 9874563212 },
+  { _id: ObjectId('6a575baf8aca103b4f748a62'), phone: 9874563213 },
+  { _id: ObjectId('6a575c398aca103b4f748a63'), phone: 9874563214 },
+  { _id: ObjectId('6a575c398aca103b4f748a64'), phone: 9874563215 }
+]
+DBk> db.users.aggregate([{$project:{S_name:1,phone:{$ifNull:["$phone","not found"]}}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_name: 'Kuldeep',
+    phone: 9874563219
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_name: 'Nishant',
+    phone: 9874563211
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_name: 'Sahil',
+    phone: 9874563212
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_name: 'Shivam',
+    phone: 9874563213
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_name: 'Utsavi',
+    phone: 9874563214
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_name: 'Bhargi',
+    phone: 9874563215
+  }
+]
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:60)
+
+> 1 | db.users.aggregate([{$project:{S_name:1,agelabel:{$switch}}}}]);
+    |                                                             ^
+  2 |
+
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:60)
+
+> 1 | db.users.aggregate([{$project:{S_name:1,agelabel:{$switch}}}}]);
+    |                                                             ^
+  2 |
+
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"},default:"NO Age"]}}}}]):
+Uncaught:
+SyntaxError: Unexpected token (1:186)
+
+> 1 | db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"},default:"NO Age"]}}}}]):
+    |                                                                                                                                                                                           ^
+  2 |
+
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]):
+Uncaught:
+SyntaxError: Missing semicolon. (1:209)
+
+> 1 | db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]):
+    |                                                                                                                                                                                                                  ^
+  2 |
+
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_name: 'Kuldeep',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_name: 'Nishant',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_name: 'Sahil',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_name: 'Shivam',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_name: 'Utsavi',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_name: 'Bhargi',
+    agelabel: '20 OK'
+  }
+]
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age":20]},then:"20 OK"},{case:{$gte:["$Age":21]},then:"21 OK"},{case:{$gte:["$Age":22]},then:"22 OK"}],default:"NO Age"}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:88)
+
+> 1 | db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age":20]},then:"20 OK"},{case:{$gte:["$Age":21]},then:"21 OK"},{case:{$gte:["$Age":22]},then:"22 OK"}],default:"NO Age"}}}}]);
+    |                                                                                         ^
+  2 |
+
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$gte:["$Age",20]},then:"20 OK"},{case:{$gte:["$Age",21]},then:"21 OK"},{case:{$gte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_name: 'Kuldeep',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_name: 'Nishant',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_name: 'Sahil',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_name: 'Shivam',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_name: 'Utsavi',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_name: 'Bhargi',
+    agelabel: '20 OK'
+  }
+]
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$lte:["$Age",20]},then:"20 OK"},{case:{$lte:["$Age",21]},then:"21 OK"},{case:{$lte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]);
+[
+  {
+    _id: ObjectId('6a575b858aca103b4f748a5f'),
+    S_name: 'Kuldeep',
+    agelabel: '22 OK'
+  },
+  {
+    _id: ObjectId('6a575b858aca103b4f748a60'),
+    S_name: 'Nishant',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a61'),
+    S_name: 'Sahil',
+    agelabel: '21 OK'
+  },
+  {
+    _id: ObjectId('6a575baf8aca103b4f748a62'),
+    S_name: 'Shivam',
+    agelabel: '20 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a63'),
+    S_name: 'Utsavi',
+    agelabel: '21 OK'
+  },
+  {
+    _id: ObjectId('6a575c398aca103b4f748a64'),
+    S_name: 'Bhargi',
+    agelabel: '22 OK'
+  }
+]
+DBk> db.users.Save(document);
+ReferenceError: document is not defined
+DBk> db.users.Save(users);
+ReferenceError: users is not defined
+DBk> db.Collection.Save(document);
+ReferenceError: document is not defined
+DBk> db.collection.Save(document);
+ReferenceError: document is not defined
+DBk> db.Collection.Save(users);
+ReferenceError: users is not defined
+DBk> db.collection.Save(users);
+ReferenceError: users is not defined
+DBk> db.users.renameCollection("friends")
+{ ok: 1 }
+DBk> db.users.Save(document);
+ReferenceError: document is not defined
+DBk> db.friends.Save(document);
+ReferenceError: document is not defined
+DBk> db.users.aggregate([{$project:{S_name:1,agelabel:{$switch:{branches:[{case:{$lte:["$Age",20]},then:"20 OK"},{case:{$lte:["$Age",21]},then:"21 OK"},{case:{$lte:["$Age",22]},then:"22 OK"}],default:"NO Age"}}}}]);
+
+DBk> use db
+switched to db db
+db> db.student.renameCollection("invoices",true);
+{ ok: 1 }
+db> use DBk
+switched to db DBk
+DBk>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+DBk>
+
+C:\Users\Student 61>

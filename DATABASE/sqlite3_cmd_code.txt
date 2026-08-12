@@ -1,0 +1,134 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+E:\CS74\DATABASE\sqlite3>sqlite3 student74.db
+SQLite version 3.49.0 2025-02-06 11:55:18
+Enter ".help" for usage hints.
+sqlite> .database
+main: E:\CS74\DATABASE\sqlite3\student74.db r/w
+sqlite> .table
+sqlite> create table student(RollNo int,S_name text ,age int);
+sqlite> insert into student74 values(1,'kuldeep',21);
+Parse error: no such table: student74
+sqlite> insert into student values(1,'kuldeep',21);
+sqlite> insert into student values(2,'sahil',22);
+sqlite> insert into student values(3,'nishant',20);
+sqlite> select
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...> * from student;
+1|kuldeep|21
+2|sahil|22
+3|nishant|20
+sqlite> update student set age = 21 where name = 'nishant';
+Parse error: no such column: name
+  update student set age = 21 where name = 'nishant';
+                      error here ---^
+sqlite> update student set age = 21 where S_name = 'nishant';
+sqlite> select
+   ...> * from student;
+1|kuldeep|21
+2|sahil|22
+3|nishant|21
+sqlite> delete from student where
+   ...> RollNo = 3
+   ...> ;
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+sqlite> insert into student values(2,'nishant',20);
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+2|nishant|20
+sqlite> delete from student where
+   ...> S_name = 'nishant';
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+3|nishant|24
+4|jaimin|22
+6|jainil|21
+sqlite> delete from student where
+   ...> S_name = 'nishant';
+sqlite> delete from student where S_name = 'jaimin';
+sqlite> delete from student where S_name = 'jainil';
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+sqlite> create table student(RollNo int primary key,S_name text ,age int);
+Parse error: table student already exists
+  create table student(RollNo int primary key,S_name text ,age int);
+               ^--- error here
+sqlite> update table student(RollNo int primary key,S_name text ,age int);
+Parse error: near "table": syntax error
+  update table student(RollNo int primary key,S_name text ,age int);
+         ^--- error here
+sqlite>
+
+
+
+
+sqlite> create table student74(RollNo int primary key,S_name text ,age int);
+sqlite> insert into student74 values(1,'kuldeep',21);
+sqlite> insert into student74 values(2,'sahil',22);
+sqlite> insert into student74 values(3,'nishant',20);
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+sqlite> select * from student74;
+1|kuldeep|21
+2|sahil|22
+3|nishant|20
+sqlite> update student set age = 21 where S_name = 'nishant';
+sqlite> select * from student74;
+1|kuldeep|21
+2|sahil|22
+3|nishant|20
+sqlite> update student74 set age = 21 where S_name = 'nishant';
+sqlite> select * from student74;
+1|kuldeep|21
+2|sahil|22
+3|nishant|21
+sqlite> delete from student74 where S_name = 'nishant';
+sqlite> select * from student74;
+1|kuldeep|21
+2|sahil|22
+sqlite> DROP table student ;
+Runtime error: database is locked (5)
+sqlite> select * from student;
+1|kuldeep|21
+2|sahil|22
+sqlite> DROP table student ;
+Runtime error: database is locked (5)
+sqlite> select * from student74;
+1|kuldeep|21
+2|sahil|22
+3|nishant|24
+4|jaimin|22
+6|jainil|21
+sqlite>
